@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Document</title>
+</head>
+<script src="/javascripts/script.js"></script>
+<body>
+   <div class="main w-full min-h-screen bg-zinc-900">
+    <div class="form p-10 text-white">
+
+        <form action="/create" method="POST">
+           <form >
+                <input class="block px-5 py-2 bg-zinc-700 rounded-md w-full ;" type="text" placeholder="title goes here" name="title">
+                <textarea class=" mt-3 block px-5 py-2 bg-zinc-700 rounded-md resize-none w-full "placeholder="write your detail text here.." name="details"></textarea>
+                <input class=" px-2 mt-2 bg-blue-600 text-white"type="submit" value="Submit">
+           </form>
+
+   </div>
+   <div class="tasks p-10 flex flex-wrap justify-center gap-5">
+<% if(files.length > 0){ %>
+    <% files.forEach(file => { %>
+        <div class="task w-72 px-3 py-4 bg-zinc-800 rounded-md tracking-tighter ">
+            <h1 class="text-white
+            "> <%=file%></h1>
+            <a class="text-blue-500 inline-block mt-3" href="/file/<%= file._id %>">read more </a>
+        </div>
+    <% }) %>
+<% } else { %>
+    <h3 class="text-red-500">No task</h3>
+<% } %>
+    </div>
+    </div>
+</body>
+</html>
+
+
+ 
+   

@@ -11,33 +11,39 @@ app.set("view engine", "ejs"); // Set the view engine to ejs
 app.get("/", (req, res) => {
   fs.readdir("./files", (err, files) => {
     // console.log(files);
-    res.render("index",{files:files});
+    res.render("index", { files: files });
   });
-
 });
 app.get("/files/:filename", (req, res) => {
   fs.readFile(`./files/${req.params.filename}`, "utf8", (err, data) => {
-    
-   res.render("show",{filename:req.params.filename, data:data});
-   console.log(data);
-   
-  }); 
-
+    res.render("show", { filename: req.params.filename, data: data });
+    console.log(data);
+  });
+  
+});
+app.get("/edit/:filename", (req, res) => {
+  res.render("edit",{filename:req.params.filename});
+  
 });
 app.post("/create", (req, res) => {
   // console.log(req.body);
-  
-  fs.writeFile(`./files/${req.body.title.split(" ").join("")}.txt`, req.body.details, (err) => {
-    if (err) {
-      console.log(err);
+
+  fs.writeFile(
+    `./files/${req.body.title.split(" ").join("")}.txt`,
+    req.body.details,
+    (err) => {
+      if (err) {
+        console.log(err);
+      }
+      res.redirect("/");
     }
-    res.redirect("/");
-  });
-
-
-
-
-
+  );
 });
+app.post("/update", (req, res) => {
+  fs.rename(`./files/${req.body.previous}`,`./files/${req.body.New}`,(err)=>{
+    res.redirect("/");
+  }
+
+)});
 
 app.listen(3000);

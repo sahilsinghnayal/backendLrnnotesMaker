@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Document</title>
+</head>
+<script src="/javascripts/script.js"></script>
+<body>
+   <div class="main w-full min-h-screen bg-zinc-900 text-white p-6">
+    <a class="text-blue-500 mb-5 inline-block" href="/">Go back</a>
+    <div class="form p-10 text-white">
+
+        <form action="/update" method="POST">
+           <form >
+                <input class="block px-5 py-2 bg-zinc-700 text-zinc-500 rounded-md w-full ;" type="text" placeholder="previous name" name="previous" value="<%=filename%>">
+                <textarea class=" mt-3 block px-5 py-2 bg-zinc-700 rounded-md resize-none w-full "placeholder="New Name" name="New"></textarea>
+                <input class=" px-2 mt-2 bg-yellow-600 text-white"type="submit" value="Update">
+           </form>
+
+   </div>
+   
+    </div>
+</body>
+</html>
+
+
+ 
+   
